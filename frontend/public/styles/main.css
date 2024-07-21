@@ -760,3 +760,63 @@ code {
     max-width: none;
   }
 }
+
+.hideable {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.hideable.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.fullsize {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+button {
+  background-color: transparent;
+  color: var(--colorToolbarPassive);
+  border: none;
+  font-family: "SansRegularCondensed", sans-serif;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  margin: 0 5px;
+  line-height: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  color: var(--colorToolbarActive);
+  outline: none;
+}
+
+button:active {
+  color: var(--colorToolbarActive);
+  filter: drop-shadow(0 0 8px var(--colorGlow));
+}
+
+.theme-light button:active {
+  background-color: var(--colorToolbarActive);
+  color: var(--colorPanel);
+  filter: none;
+  border-radius: 6px;
+}
+button.emoji {
+  font-size: 1.0rem;
+  padding: 4px 8px;
+  cursor: pointer;
+}
