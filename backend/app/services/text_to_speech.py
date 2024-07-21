@@ -18,11 +18,14 @@ Note:
 
 import os
 
-from app.config import GOOGLE_APPLICATION_CREDENTIALS
 from google.cloud import texttospeech
 
+from ..config import Config
+
+conf = Config()
+
 # Set Google Application Credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GOOGLE_APPLICATION_CREDENTIALS
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = conf.GOOGLE_APPLICATION_CREDENTIALS
 
 client = texttospeech.TextToSpeechClient()
 

@@ -8,11 +8,11 @@ Routes:
 Each route is protected by token-based authentication.
 """
 
-from app.services.lecture_generator import generate_lecture_and_slides
-from app.utils.auth import token_required
 from flask import jsonify, request
 
 from . import routes
+from ..services.lecture_generator import generate_lecture_and_slides
+from ..utils.auth import token_required
 
 
 @routes.route("/generate_lecture", methods=["POST"])

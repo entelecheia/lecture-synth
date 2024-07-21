@@ -4,6 +4,7 @@ gunicorn==22.0.0
 
 # AI and NLP
 langchain==0.2.10
+langchain-community==0.2.9
 openai==1.36.1
 
 # Text-to-Speech

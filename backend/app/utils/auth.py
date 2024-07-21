@@ -1,9 +1,12 @@
 import jwt
 
-from app.config import JWT_ALGORITHM, JWT_EXPIRATION_DELTA, JWT_SECRET_KEY
 from datetime import datetime, timedelta, timezone
 from flask import jsonify, request
 from functools import wraps
+
+from ..config import Config
+
+conf = Config()
 
 
 def generate_token(user_id: str) -> str:
@@ -18,11 +21,12 @@ def generate_token(user_id: str) -> str:
     """
     try:
         payload = {
-            "exp": datetime.now(timezone.utc) + timedelta(days=JWT_EXPIRATION_DELTA),
+            "exp": datetime.now(timezone.utc)
+            + timedelta(days=conf.JWT_EXPIRATION_DELTA),
             "iat": datetime.now(timezone.utc),
             "sub": user_id,
         }
-        return jwt.encode(payload, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
+        return jwt.encode(payload, conf.JWT_SECRET_KEY, algorithm=conf.JWT_ALGORITHM)
     except Exception as e:
         return str(e)
 
@@ -38,7 +42,7 @@ def decode_token(token: str) -> dict:
         dict: The decoded token payload.
     """
     try:
-        return jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        return jwt.decode(token, conf.JWT_SECRET_KEY, algorithms=[conf.JWT_ALGORITHM])
     except jwt.ExpiredSignatureError as e:
         raise jwt.ExpiredSignatureError("Token has expired") from e
     except jwt.InvalidTokenError:

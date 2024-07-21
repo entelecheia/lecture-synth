@@ -9,6 +9,4 @@ related views and other code.
 
 from flask import Blueprint
 
-from . import lecture, tts
-
 routes = Blueprint("routes", __name__)

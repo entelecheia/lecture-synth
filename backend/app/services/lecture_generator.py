@@ -13,12 +13,15 @@ Dependencies:
     - langchain library
 """
 
-from app.config import OPENAI_API_KEY
 from langchain.chains import LLMChain
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 
-llm = OpenAI(temperature=0.7, api_key=OPENAI_API_KEY)
+from ..config import Config
+
+conf = Config()
+
+llm = OpenAI(temperature=0.7, api_key=conf.OPENAI_API_KEY)
 
 lecture_prompt = PromptTemplate(
     input_variables=["topic", "duration"],

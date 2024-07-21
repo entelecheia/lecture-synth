@@ -13,11 +13,11 @@ Each route is protected by token authentication.
 
 import io
 
-from app.services.text_to_speech import generate_speech
-from app.utils.auth import token_required
 from flask import jsonify, request, send_file
 
 from . import routes
+from ..services.text_to_speech import generate_speech
+from ..utils.auth import token_required
 
 
 @routes.route("/text_to_speech", methods=["POST"])
