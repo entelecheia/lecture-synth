@@ -1,0 +1,53 @@
+lecture-synth/
+│
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   ├── routes/
+│   │   │   ├── __init__.py
+│   │   │   ├── lecture.py
+│   │   │   └── tts.py
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── lecture_generator.py
+│   │   │   └── text_to_speech.py
+│   │   └── utils/
+│   │       ├── __init__.py
+│   │       └── auth.py
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── test_lecture_generator.py
+│   │   └── test_tts.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── styles/
+│   │   │   └── main.css
+│   │   └── assets/
+│   │       └── avatars/
+│   │           ├── lecturer1.glb
+│   │           └── lecturer2.glb
+│   ├── src/
+│   │   ├── js/
+│   │   │   ├── main.js
+│   │   │   ├── talkingHead.js
+│   │   │   └── utils.js
+│   │   └── components/
+│   │       ├── LectureCreator.js
+│   │       └── AvatarDisplay.js
+│   ├── package.json
+│   └── webpack.config.js
+│
+├── docs/
+│   ├── API.md
+│   └── USAGE.md
+│
+├── .gitignore
+├── README.md
+├── LICENSE
+└── docker-compose.yaml
