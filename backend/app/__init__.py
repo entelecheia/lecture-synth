@@ -13,6 +13,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from .config import Config
+from .routes import routes as routes_blueprint
 
 
 def create_app(config_class=Config):
@@ -25,8 +26,6 @@ def create_app(config_class=Config):
     # Initialize any other extensions here (e.g., database)
 
     # Register blueprints
-    from .routes import routes as routes_blueprint
-
     app.register_blueprint(routes_blueprint, url_prefix="/api")
 
     @app.route("/health")
