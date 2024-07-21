@@ -4,4 +4,3 @@ backend/app/.credentials
 __pycache__
 
 node_modules
-frontend/public/test.html
