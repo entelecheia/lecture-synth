@@ -4,7 +4,7 @@ from app.services.lecture_generator import generate_lecture_and_slides
 
 def test_generate_lecture_and_slides():
     topic = "Artificial Intelligence"
-    duration = 10
+    duration = 1
 
     result = generate_lecture_and_slides(topic, duration)
 
