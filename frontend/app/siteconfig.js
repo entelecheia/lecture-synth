@@ -8,6 +8,12 @@ export const site = {
       avatarMood: "neutral",
       fi: "Mies",
     },
+    Woman: {
+      url: "./assets/avatars/woman.glb",
+      body: "W",
+      avatarMood: "neutral",
+      fi: "Nainen",
+    },
   },
 
   // Google voices
