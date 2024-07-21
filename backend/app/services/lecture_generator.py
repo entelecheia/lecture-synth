@@ -1,3 +1,18 @@
+"""
+This module provides functionality for generating lectures and accompanying slides using OpenAI's language model.
+
+It utilizes the LangChain library to create a chain that processes a prompt template
+with input variables for the lecture topic and duration. The generated content includes
+a full lecture and a set of slides summarizing the main points.
+
+Functions:
+    generate_lecture_and_slides: Generates a lecture and slides on a given topic.
+
+Dependencies:
+    - OpenAI API key (configured in app.config)
+    - langchain library
+"""
+
 from app.config import OPENAI_API_KEY
 from langchain.chains import LLMChain
 from langchain.llms import OpenAI

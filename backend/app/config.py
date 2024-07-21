@@ -1,4 +1,23 @@
+"""
+Configuration settings for the backend application.
+
+This module loads environment variables and defines configuration
+settings for various components of the application, including:
+- Flask settings
+- API keys
+- JWT configuration
+- Database configuration (commented out)
+
+The Config class uses environment variables to set values, with
+fallback default values where appropriate.
+
+Usage:
+    from config import Config
+    app.config.from_object(Config)
+"""
+
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()

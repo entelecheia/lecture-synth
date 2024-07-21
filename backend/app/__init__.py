@@ -1,5 +1,17 @@
+"""
+Flask application factory.
+
+This module contains the create_app function, which is responsible for
+initializing and configuring the Flask application. It sets up CORS,
+registers blueprints, and adds a health check endpoint.
+
+Returns:
+    Flask: The configured Flask application instance.
+"""
+
 from flask import Flask
 from flask_cors import CORS
+
 from .config import Config
 
 

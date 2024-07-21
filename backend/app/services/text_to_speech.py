@@ -1,3 +1,21 @@
+"""
+This module provides functionality for text-to-speech conversion using Google Cloud Text-to-Speech API.
+
+It includes functions to generate speech from text and list available voices.
+
+Functions:
+    generate_speech: Converts text to speech using specified language and voice.
+    list_voices: Retrieves a list of available voices, optionally filtered by language code.
+
+Dependencies:
+    - google-cloud-texttospeech
+    - app.config (for GOOGLE_APPLICATION_CREDENTIALS)
+
+Note:
+    Ensure that the GOOGLE_APPLICATION_CREDENTIALS environment variable is set
+    with the path to your Google Cloud service account key file.
+"""
+
 import os
 
 from app.config import GOOGLE_APPLICATION_CREDENTIALS
