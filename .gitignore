@@ -2,3 +2,5 @@
 frontend/public/assets/avatars
 backend/app/.credentials
 __pycache__
+
+node_modules
