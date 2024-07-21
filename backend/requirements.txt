@@ -1,0 +1,45 @@
+# Web Framework
+Flask==3.0.3
+gunicorn==22.0.0
+
+# AI and NLP
+langchain==0.2.10
+openai==1.36.1
+
+# Text-to-Speech
+google-cloud-texttospeech==2.16.4
+
+# Utilities
+python-dotenv==1.0.1
+requests==2.32.3
+
+# Security
+PyJWT==2.8.0
+
+# Testing
+pytest==8.3.1
+
+# Linting and Formatting
+black==24.4.2
+flake8==7.1.0
+
+# API Documentation
+# flasgger==0.9.7
+
+# Performance Monitoring
+# prometheus-flask-exporter==0.22.3
+
+# Caching
+# Flask-Caching==2.0.2
+
+# CORS handling
+Flask-CORS==4.0.1
+
+# Async support
+aiohttp
+
+# Environment variable management
+# environs==9.5.0
+
+# Logging
+# structlog==23.1.0
