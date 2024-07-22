@@ -3,6 +3,9 @@ import { TalkingHead } from "../modules/talkinghead.mjs";
 import dompurify from "dompurify";
 import { marked } from "marked";
 
+// Set this to false for production
+const isDevelopment = true;
+
 // API endpoints/proxys
 const jwtEndpoint = "/app/jwt/get"; // Get JSON Web Token for Single Sign-On
 const openaiChatCompletionsProxy = "/openai/v1/chat/completions";
@@ -209,36 +212,54 @@ let jwt = "";
 
 // Get JSON Web Token
 async function jwtGet() {
-  const limit = Math.round(Date.now() / 1000) + 60;
-  if (jwtExpires < limit) {
-    try {
-      const o = await (await fetch(jwtEndpoint, { cache: "no-store" })).json();
-      if (o && o.jwt) {
-        const b64Url = o.jwt.split(".")[1];
-        const b64 = b64Url.replace(/-/g, "+").replace(/_/g, "/");
-        const s = decodeURIComponent(
-          window
-            .atob(b64)
-            .split("")
-            .map((c) => {
-              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-            })
-            .join("")
-        );
-        const p = JSON.parse(s);
-        jwtExpires = p && p.exp ? p.exp : 0;
-        jwt = o.jwt;
-      } else {
+  if (isDevelopment) {
+    const limit = Math.round(Date.now() / 1000) + 60;
+    if (jwtExpires < limit) {
+      // Generate a new JWT
+      const payload = {
+        exp: Math.round(Date.now() / 1000) + 3600, // 1 hour from now
+        iat: Math.round(Date.now() / 1000),
+        sub: "dev-user",
+      };
+
+      jwt = jwtEncode(payload, DEV_SECRET_KEY);
+      jwtExpires = payload.exp;
+    }
+    return jwt;
+  } else {
+    const limit = Math.round(Date.now() / 1000) + 60;
+    if (jwtExpires < limit) {
+      try {
+        const o = await (
+          await fetch(jwtEndpoint, { cache: "no-store" })
+        ).json();
+        if (o && o.jwt) {
+          const b64Url = o.jwt.split(".")[1];
+          const b64 = b64Url.replace(/-/g, "+").replace(/_/g, "/");
+          const s = decodeURIComponent(
+            window
+              .atob(b64)
+              .split("")
+              .map((c) => {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+              })
+              .join("")
+          );
+          const p = JSON.parse(s);
+          jwtExpires = p && p.exp ? p.exp : 0;
+          jwt = o.jwt;
+        } else {
+          jwt = "";
+          jwtExpires = 0;
+        }
+      } catch (e) {
+        console.error(e);
         jwt = "";
         jwtExpires = 0;
       }
-    } catch (e) {
-      console.error(e);
-      jwt = "";
-      jwtExpires = 0;
     }
+    return jwt.slice();
   }
-  return jwt.slice();
 }
 
 // Speak using ElevenLabs
