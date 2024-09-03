@@ -34,7 +34,7 @@ flake8==7.1.0
 # Flask-Caching==2.0.2
 
 # CORS handling
-Flask-CORS==4.0.1
+Flask-CORS==5.0.0
 
 # Async support
 aiohttp
